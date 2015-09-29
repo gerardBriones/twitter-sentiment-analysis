@@ -1,10 +1,10 @@
-# InformationExtractor.py
-# Testing, removing special characters and lower case
+# dataCleaner.py
+# removing special characters and lower casifying the data
 
 import re
 
 supporting_data_path = "supporting_data/"
-s = "Gas by my house hit $3.39!!!! I'm going to Chapel Hill on Sat. :)"
+
 
 # perform initial preprocessing
 # returns all lower case string without special characters, numbers etc. 
