@@ -10,13 +10,19 @@ import dataCleaner
 training_data_path = 'train_data/'
 
 # dict for tweet ids
-tweet_ids = {}
+tweet_ids_to_index = {}
+
+# reversed!
+index_to_tweet_ids = {}
 
 # dict of unigram hashes for each tweet id
 tweet_unigrams = {}
 
 # dict for unigrams
-unigrams = {}
+unigrams_to_index = {}
+
+# also reversed!
+index_to_unigrams = {}
 
 # 2D list mapping tweet_id to list of words
 # 
@@ -30,12 +36,12 @@ list_of_tweets = []
 for filename in os.listdir(training_data_path):
 
 	# FIRST ROUND OF PROCESSING
-	# populate tweet_ids{} and unigrams{} with key value pairs
-	# tweet_ids{}:
+	# populate tweet_ids_to_index{} and unigrams_to_index{} with key value pairs
+	# tweet_ids_to_index{}:
 	# 	key = tweet_id
 	# 	value = index
 	#
-	# unigrams{}:
+	# unigrams_to_index{}:
 	# 	key = word
 	# 	value = index
 	#
@@ -74,21 +80,27 @@ for filename in os.listdir(training_data_path):
 				tokens = dataCleaner.removeStopWords(dataCleaner.removeSpecialCharacters(row[5].lower()))
 
 				# first occurance of tweet id, to prevent tracking duplicates
-				if not tweet_id in tweet_ids:
+				if not tweet_id in tweet_ids_to_index:
 
 					# add tweet_id to tweet_ids{} with a value of its associated index
-					tweet_ids[tweet_id] = tweetCounter
+					tweet_ids_to_index[tweet_id] = tweetCounter
 					tweetCounter += 1
 
 					# for each word in tweet...
 					for token in tokens:
 
 						# first occurance of word, to prevent tracking duplicates
-						if not token in unigrams:
+						if not token in unigrams_to_index:
 
-							# add word to unigrams{} with a value of its associated index
-							unigrams[token] = wordCounter
+							# add word to unigrams_to_index{} with a value of its associated index
+							unigrams_to_index[token] = wordCounter
 							wordCounter += 1
+
+	# REVERSE THE DICTS!
+	for tweet_id in tweet_ids_to_index:
+		index_to_tweet_ids[tweet_ids_to_index[tweet_id]] = tweet_id
+	for word in unigrams_to_index:
+		index_to_unigrams[unigrams_to_index[word]] = word
 
 	# SECOND ROUND OF PROCESSING
 	# populate list_of_tweets[] with tweet_ids and messages
@@ -105,11 +117,11 @@ for filename in os.listdir(training_data_path):
 		tsv_in2 = csv.reader(tsv_in2, delimiter='\t')
 
 		# initialize first dimension of list_of_tweets for tweet_ids
-		list_of_tweets = [0] * (len(tweet_ids))
+		list_of_tweets = [0] * (len(tweet_ids_to_index))
 
 		# initialize second dimension of list_of_tweets for bag of words
-		for i in range(0, len(tweet_ids)):
-			list_of_tweets[i] = [0] * (len(unigrams))
+		for i in range(0, len(tweet_ids_to_index)):
+			list_of_tweets[i] = [0] * (len(unigrams_to_index))
 
 		# temporary dict to keep track of tweet_ids
 		temp_tweet_ids = {}
@@ -143,6 +155,7 @@ for filename in os.listdir(training_data_path):
 
 					# build bag of words for each unique tweet
 					for token in tokens:
-						list_of_tweets[tweet_ids[tweet_id]][unigrams[token]] += 1
+						list_of_tweets[tweet_ids_to_index[tweet_id]][unigrams_to_index[token]] += 1
 
-print unigrams
+for unigram in unigrams_to_index:
+	print unigram, ' : ', unigrams_to_index[unigram]
