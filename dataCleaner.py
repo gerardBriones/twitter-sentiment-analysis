@@ -17,7 +17,7 @@ def removeSpecialCharacters(str):
 # Before calling this method, initial_preprocessing has to be called
 # pass in the initial preprocessed string as the argument
 # returns the tokens sans stop words from the tweet
-def removeStopWords(str):
+def removeStopWords(str, n):
 	# extracting the set of words in the string 	
 	word_list = str.split();
 
@@ -28,9 +28,21 @@ def removeStopWords(str):
 	for row in sw_fp:
 		row = re. sub('[^A-Za-z ]+', '', row)
 		sw_list = row.split()
+
 	word_list = str.split();
 	key_words = []
 	for word in word_list:
 		if word not in sw_list:
 			key_words.append(word)
-	return key_words
+
+	ngrams = []
+	for i in range(0, len(key_words)):
+		temp_string = ''
+		if (i + n - 1) >= len(key_words):
+			break;
+		for j in range(i, i + n):
+			if j >= len(key_words):
+				break;
+			temp_string += (key_words[j]) + ' '
+		ngrams.append(temp_string.rstrip())
+	return ngrams
