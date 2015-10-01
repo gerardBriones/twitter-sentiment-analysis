@@ -57,8 +57,12 @@ freq_thresh = 1
 
 # dicts to hold the sentiment classes that exist and number of elements in each class (training and testing)
 # Assumption - Objective tweets are neutral ( 3 - class classification task)
-sentiment_classes_train = {'objective':0,'positive':0, 'neutral':0, 'negative':0} 
-sentiment_classes_test = {'objective':0,'positive':0, 'neutral':0, 'negative':0}
+#sentiment_classes_train = {'objective':0,'positive':0, 'neutral':0, 'negative':0}
+#sentiment_classes_test = {'objective':0,'positive':0, 'neutral':0, 'negative':0}
+
+# 2nd attempt - remove objective tweets from dataset
+sentiment_classes_train = {'positive':0, 'neutral':0, 'negative':0} 
+sentiment_classes_test = {'positive':0, 'neutral':0, 'negative':0}
 
 # The training and testing TDM/ FV
 # TDM - Term Document Matrix, FV - Feature Vector
