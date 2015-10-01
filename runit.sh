@@ -10,11 +10,29 @@ python dataLoader.py
 #create feature vector for baseline
 python featureVectorCreator_BL.py
 
-#run weka on baseline feature vector
-java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayes -o -t arff_data/arff_train_bl.arff -T arff_data/arff_test_bl.arff -k > output/weka_bl.txt
+#run naive bayes on baseline feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayes -o -t arff_data/arff_train_bl.arff -T arff_data/arff_test_bl.arff -k > output/naiveBayes_bl.txt
+
+#run naive bayes multinomial on baseline feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayesMultinomial -o -t arff_data/arff_train_bl.arff -T arff_data/arff_test_bl.arff -k > output/naiveBayesMulti_bl.txt
+
+#run decision tree J48 on baseline feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.J48 -o -t arff_data/arff_train_bl.arff -T arff_data/arff_test_bl.arff -k > output/j48_bl.txt
+
+#run decision tree random forst on baseline feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.RandomForest -o -t arff_data/arff_train_bl.arff -T arff_data/arff_test_bl.arff -k > output/randomForest_bl.txt
 
 #create feature vector for pm (presented method)
 python featureVectorCreator_PM.py
 
-#run weka on pm feature vector
-java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayes -o -t arff_data/arff_train_pm.arff -T arff_data/arff_test_pm.arff -k > output/weka_pm.txt
+#run naive bayes on pm feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayes -o -t arff_data/arff_train_pm.arff -T arff_data/arff_test_pm.arff -k > output/naiveBayes_pm.txt
+
+#run naive bayes multinomial on pm feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayesMultinomial -o -t arff_data/arff_train_pm.arff -T arff_data/arff_test_pm.arff -k > output/naiveBayesMulti_pm.txt
+
+#run decision tree J48 on pm feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.J48 -o -t arff_data/arff_train_pm.arff -T arff_data/arff_test_pm.arff -k > output/j48_pm.txt
+
+#run decision tree random forst on pm feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.RandomForest -o -t arff_data/arff_train_pm.arff -T arff_data/arff_test_pm.arff -k > output/randomForest_pm.txt
