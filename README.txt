@@ -30,15 +30,24 @@ Outline:
 		- each row signifies a tweet
 		- each column signifies a word and its frequency
 	9) write feature vector to a .arff file for WEKA processing
-	10) use WEKA to classify the .arff using a Naive Bayes classifer
-
+	10) use WEKA to classify the .arff using 4 classifiers:
+		* naive bayes
+		* naive bayes multinomial
+		* decision tree j48
+		* decision tree random forest
 Input:
 	train_A_output.tsv
 	- this is the .tsv obtained by using the 'twitter_download' script written by Alan Ritter for our task.
 	- this contains all of the tweet data
 
 Output:
-	weka_bl.txt
+	4 for baseline
+	<CLASSIFER TYPE>_bl.txt
+	- this is output by WEKA after the classifier has finished running
+	- this contains the results of the classifier
+
+	4 for presented method
+	<CLASSIFER TYPE>_pm.txt
 	- this is output by WEKA after the classifier has finished running
 	- this contains the results of the classifier
 
