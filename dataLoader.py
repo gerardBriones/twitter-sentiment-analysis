@@ -40,6 +40,9 @@ for filename in os.listdir(all_data_path):
 		
 		tsv_in = csv.reader(tsv_in, delimiter='\t')
 
+		# ROW PATTERN - One tweet per line
+		#	0	1	  2				3			4			 5
+		# id1 | id2 | start_token | end_token | pred_class | message
 		for row in tsv_in:
 			tid = row[0]
 			
@@ -61,13 +64,7 @@ for filename in os.listdir(all_data_path):
 					else:
 						fp_test.write(str(tid)+"\t"+tweet+"\t"+sentiment+"\n")
 						num_testing +=1
-			
-	
-
-
 
 	#print num_training, num_testing
 	fp_train.close()
 	fp_test.close()
-				
-

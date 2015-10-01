@@ -1,4 +1,11 @@
+# runit.sh
+# Authors: Gerard Briones
+# runs the project
+
 #!/bin/bash
+
+#load the necessary data
+python dataLoader.py
 
 #create feature vector for baseline
 python featureVectorCreator_BL.py

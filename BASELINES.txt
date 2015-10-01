@@ -1,0 +1,59 @@
+- BASELINES -
+- 10/1/2015 -
+
+For task A, we are using a baseline of a 'bag of unigrams' being fed into a classifer to classify the tweets.
+
+Results from our baseline: (can also be found in ./output/weka_bl.txt after running the project through runit.sh)
+
+Time taken to build model: 0.12 seconds
+Time taken to test model on training data: 0.32 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances         325               80.4455 %
+Incorrectly Classified Instances        79               19.5545 %
+Kappa statistic                          0.5566
+K&B Relative Info Score              18180.2003 %
+K&B Information Score                  182.0537 bits      0.4506 bits/instance
+Class complexity | order 0             400.3761 bits      0.991  bits/instance
+Class complexity | scheme              275.5744 bits      0.6821 bits/instance
+Complexity improvement     (Sf)        124.8017 bits      0.3089 bits/instance
+Mean absolute error                      0.1529
+Root mean squared error                  0.301 
+Relative absolute error                 56.4092 %
+Root relative squared error             81.9583 %
+Total Number of Instances              404     
+
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 247   7  44 |   a = positive
+   1  14   1 |   b = neutral
+  24   2  64 |   c = negative
+
+
+=== Error on test data ===
+
+Correctly Classified Instances         172               71.0744 %
+Incorrectly Classified Instances        70               28.9256 %
+Kappa statistic                          0.2284
+K&B Relative Info Score               2681.4886 %
+K&B Information Score                   26.852  bits      0.111  bits/instance
+Class complexity | order 0             235.8496 bits      0.9746 bits/instance
+Class complexity | scheme              353.7387 bits      1.4617 bits/instance
+Complexity improvement     (Sf)       -117.8892 bits     -0.4871 bits/instance
+Mean absolute error                      0.2208
+Root mean squared error                  0.3876
+Relative absolute error                 82.1655 %
+Root relative squared error            106.479  %
+Total Number of Instances              242     
+
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 151   4  25 |   a = positive
+   7   0   2 |   b = neutral
+  31   1  21 |   c = negative
+
