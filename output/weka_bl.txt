@@ -1,0 +1,53 @@
+
+Time taken to build model: 2.65 seconds
+Time taken to test model on training data: 24.99 seconds
+
+=== Error on training data ===
+
+Correctly Classified Instances        4292               88.6045 %
+Incorrectly Classified Instances       552               11.3955 %
+Kappa statistic                          0.3062
+K&B Relative Info Score            -310437.5188 %
+K&B Information Score                -1449.3392 bits     -0.2992 bits/instance
+Class complexity | order 0            2253.0432 bits      0.4651 bits/instance
+Class complexity | scheme             2275.5947 bits      0.4698 bits/instance
+Complexity improvement     (Sf)        -22.5515 bits     -0.0047 bits/instance
+Mean absolute error                      0.1151
+Root mean squared error                  0.2423
+Relative absolute error                115.122  %
+Root relative squared error            108.4863 %
+Total Number of Instances             4844     
+
+
+=== Confusion Matrix ===
+
+    a    b    c   <-- classified as
+  111  175   12 |    a = positive
+  218 4147   91 |    b = neutral
+    2   54   34 |    c = negative
+
+
+=== Error on test data ===
+
+Correctly Classified Instances        2808               87.9975 %
+Incorrectly Classified Instances       383               12.0025 %
+Kappa statistic                          0.1882
+K&B Relative Info Score            -274830.8672 %
+K&B Information Score                -1283.1025 bits     -0.4021 bits/instance
+Class complexity | order 0            1385.3313 bits      0.4341 bits/instance
+Class complexity | scheme             1763.1233 bits      0.5525 bits/instance
+Complexity improvement     (Sf)       -377.792  bits     -0.1184 bits/instance
+Mean absolute error                      0.1212
+Root mean squared error                  0.253 
+Relative absolute error                126.3646 %
+Root relative squared error            118.2353 %
+Total Number of Instances             3191     
+
+
+=== Confusion Matrix ===
+
+    a    b    c   <-- classified as
+   55  124    1 |    a = positive
+  140 2750   68 |    b = neutral
+    4   46    3 |    c = negative
+
