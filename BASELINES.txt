@@ -3,57 +3,221 @@
 
 For task A, we are using a baseline of a 'bag of unigrams' being fed into a classifer to classify the tweets.
 
-Results from our baseline: (can also be found in ./output/weka_bl.txt after running the project through runit.sh)
+Results from our baseline: (can also be found in the output directory tagged with '_bl')
 
-Time taken to build model: 0.12 seconds
-Time taken to test model on training data: 0.32 seconds
+***** j48 *****
 
 === Error on training data ===
 
-Correctly Classified Instances         325               80.4455 %
-Incorrectly Classified Instances        79               19.5545 %
-Kappa statistic                          0.5566
-K&B Relative Info Score              18180.2003 %
-K&B Information Score                  182.0537 bits      0.4506 bits/instance
-Class complexity | order 0             400.3761 bits      0.991  bits/instance
-Class complexity | scheme              275.5744 bits      0.6821 bits/instance
-Complexity improvement     (Sf)        124.8017 bits      0.3089 bits/instance
-Mean absolute error                      0.1529
-Root mean squared error                  0.301 
-Relative absolute error                 56.4092 %
-Root relative squared error             81.9583 %
-Total Number of Instances              404     
+Correctly Classified Instances         309               79.845  %
+Incorrectly Classified Instances        78               20.155  %
+Kappa statistic                          0.2992
+K&B Relative Info Score               6933.0388 %
+K&B Information Score                   66.5386 bits      0.1719 bits/instance
+Class complexity | order 0             366.7852 bits      0.9478 bits/instance
+Class complexity | scheme              311.0296 bits      0.8037 bits/instance
+Complexity improvement     (Sf)         55.7556 bits      0.1441 bits/instance
+Mean absolute error                      0.2142
+Root mean squared error                  0.3272
+Relative absolute error                 82.0737 %
+Root relative squared error             90.8406 %
+Total Number of Instances              387     
 
 
 === Confusion Matrix ===
 
    a   b   c   <-- classified as
- 247   7  44 |   a = positive
-   1  14   1 |   b = neutral
-  24   2  64 |   c = negative
+ 286   0   4 |   a = positive
+  12   0   0 |   b = neutral
+  62   0  23 |   c = negative
 
 
 === Error on test data ===
 
-Correctly Classified Instances         172               71.0744 %
-Incorrectly Classified Instances        70               28.9256 %
-Kappa statistic                          0.2284
-K&B Relative Info Score               2681.4886 %
-K&B Information Score                   26.852  bits      0.111  bits/instance
-Class complexity | order 0             235.8496 bits      0.9746 bits/instance
-Class complexity | scheme              353.7387 bits      1.4617 bits/instance
-Complexity improvement     (Sf)       -117.8892 bits     -0.4871 bits/instance
-Mean absolute error                      0.2208
-Root mean squared error                  0.3876
-Relative absolute error                 82.1655 %
-Root relative squared error            106.479  %
-Total Number of Instances              242     
+Correctly Classified Instances         187               72.2008 %
+Incorrectly Classified Instances        72               27.7992 %
+Kappa statistic                          0.0772
+K&B Relative Info Score               1612.3554 %
+K&B Information Score                   15.4743 bits      0.0597 bits/instance
+Class complexity | order 0             269.7129 bits      1.0414 bits/instance
+Class complexity | scheme             4550.0358 bits     17.5677 bits/instance
+Complexity improvement     (Sf)      -4280.3229 bits    -16.5263 bits/instance
+Mean absolute error                      0.2532
+Root mean squared error                  0.3794
+Relative absolute error                 93.2552 %
+Root relative squared error            101.2507 %
+Total Number of Instances              259     
 
 
 === Confusion Matrix ===
 
    a   b   c   <-- classified as
- 151   4  25 |   a = positive
-   7   0   2 |   b = neutral
-  31   1  21 |   c = negative
+ 181   0   7 |   a = positive
+  12   0   1 |   b = neutral
+  52   0   6 |   c = negative
+
+
+
+
+
+***** naive bayes multinomial *****
+
+=== Error on training data ===
+
+Correctly Classified Instances         355               91.7313 %
+Incorrectly Classified Instances        32                8.2687 %
+Kappa statistic                          0.7699
+K&B Relative Info Score              25653.6121 %
+K&B Information Score                  246.206  bits      0.6362 bits/instance
+Class complexity | order 0             366.7852 bits      0.9478 bits/instance
+Class complexity | scheme              121.9724 bits      0.3152 bits/instance
+Complexity improvement     (Sf)        244.8128 bits      0.6326 bits/instance
+Mean absolute error                      0.0867
+Root mean squared error                  0.1979
+Relative absolute error                 33.2275 %
+Root relative squared error             54.9423 %
+Total Number of Instances              387     
+
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 284   0   6 |   a = positive
+   7   4   1 |   b = neutral
+  18   0  67 |   c = negative
+
+
+=== Error on test data ===
+
+Correctly Classified Instances         189               72.973  %
+Incorrectly Classified Instances        70               27.027  %
+Kappa statistic                          0.152 
+K&B Relative Info Score               5307.6355 %
+K&B Information Score                   50.9391 bits      0.1967 bits/instance
+Class complexity | order 0             269.7129 bits      1.0414 bits/instance
+Class complexity | scheme              312.0416 bits      1.2048 bits/instance
+Complexity improvement     (Sf)        -42.3286 bits     -0.1634 bits/instance
+Mean absolute error                      0.199 
+Root mean squared error                  0.3713
+Relative absolute error                 73.2711 %
+Root relative squared error             99.0973 %
+Total Number of Instances              259     
+
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 178   0  10 |   a = positive
+  11   0   2 |   b = neutral
+  47   0  11 |   c = negative
+
+
+
+
+
+***** naive bayes *****
+
+=== Error on training data ===
+
+Correctly Classified Instances         327               84.4961 %
+Incorrectly Classified Instances        60               15.5039 %
+Kappa statistic                          0.6284
+K&B Relative Info Score              19815.0976 %
+K&B Information Score                  190.1719 bits      0.4914 bits/instance
+Class complexity | order 0             366.7852 bits      0.9478 bits/instance
+Class complexity | scheme              204.0707 bits      0.5273 bits/instance
+Complexity improvement     (Sf)        162.7145 bits      0.4205 bits/instance
+Mean absolute error                      0.1278
+Root mean squared error                  0.2638
+Relative absolute error                 48.9728 %
+Root relative squared error             73.2317 %
+Total Number of Instances              387     
+
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 251   5  34 |   a = positive
+   2  10   0 |   b = neutral
+  18   1  66 |   c = negative
+
+
+=== Error on test data ===
+
+Correctly Classified Instances         170               65.6371 %
+Incorrectly Classified Instances        89               34.3629 %
+Kappa statistic                          0.0852
+K&B Relative Info Score               1832.8878 %
+K&B Information Score                   17.5908 bits      0.0679 bits/instance
+Class complexity | order 0             269.7129 bits      1.0414 bits/instance
+Class complexity | scheme              443.8334 bits      1.7136 bits/instance
+Complexity improvement     (Sf)       -174.1204 bits     -0.6723 bits/instance
+Mean absolute error                      0.2344
+Root mean squared error                  0.4084
+Relative absolute error                 86.3029 %
+Root relative squared error            108.9896 %
+Total Number of Instances              259     
+
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 157   1  30 |   a = positive
+   7   1   5 |   b = neutral
+  44   2  12 |   c = negative
+
+
+
+
+
+***** random forest *****
+
+=== Error on training data ===
+
+Correctly Classified Instances         378               97.6744 %
+Incorrectly Classified Instances         9                2.3256 %
+Kappa statistic                          0.9381
+K&B Relative Info Score              28102.0823 %
+K&B Information Score                  269.7048 bits      0.6969 bits/instance
+Class complexity | order 0             366.7852 bits      0.9478 bits/instance
+Class complexity | scheme               92.1897 bits      0.2382 bits/instance
+Complexity improvement     (Sf)        274.5955 bits      0.7095 bits/instance
+Mean absolute error                      0.0925
+Root mean squared error                  0.1562
+Relative absolute error                 35.4521 %
+Root relative squared error             43.3569 %
+Total Number of Instances              387     
+
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 290   0   0 |   a = positive
+   2  10   0 |   b = neutral
+   7   0  78 |   c = negative
+
+
+=== Error on test data ===
+
+Correctly Classified Instances         185               71.4286 %
+Incorrectly Classified Instances        74               28.5714 %
+Kappa statistic                          0.0756
+K&B Relative Info Score               2205.8697 %
+K&B Information Score                   21.1704 bits      0.0817 bits/instance
+Class complexity | order 0             269.7129 bits      1.0414 bits/instance
+Class complexity | scheme            17370.6759 bits     67.0682 bits/instance
+Complexity improvement     (Sf)     -17100.963  bits    -66.0269 bits/instance
+Mean absolute error                      0.2381
+Root mean squared error                  0.3772
+Relative absolute error                 87.6777 %
+Root relative squared error            100.6857 %
+Total Number of Instances              259     
+
+
+=== Confusion Matrix ===
+
+   a   b   c   <-- classified as
+ 178   3   7 |   a = positive
+  13   0   0 |   b = neutral
+  51   0   7 |   c = negative
 
