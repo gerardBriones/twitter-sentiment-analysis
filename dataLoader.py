@@ -11,9 +11,21 @@ all_data_path = 'data_all/'
 
 # directory to store training data
 train_data_path = 'train_data/'
+if not os.path.exists(train_data_path):
+	os.makedirs(train_data_path)
 
 # directory to store testing data
 test_data_path = 'test_data/'
+if not os.path.exists(test_data_path):
+	os.makedirs(test_data_path)
+
+arff_data_path = 'arff_data/'
+if not os.path.exists(arff_data_path):
+	os.makedirs(arff_data_path)
+
+output_path = 'output/'
+if not os.path.exists(output_path):
+	os.makedirs(output_path)
 
 # setting training and testing percentages
 training_portion = 60
