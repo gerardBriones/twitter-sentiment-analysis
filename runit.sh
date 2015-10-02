@@ -38,7 +38,7 @@ java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.J48 -o -t arff_d
 java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.RandomForest -o -t arff_data/arff_train_pm.arff -T arff_data/arff_test_pm.arff -k > output/randomForest_pm.txt
 
 #create feature vector of combined unigrams and bigrams
-python featureVectorCreator_combined.py
+python featureVectorCreator_Combined.py
 
 #run naive bayes on combined feature vector
 java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayes -o -t arff_data/arff_train_combined.arff -T arff_data/arff_test_combined.arff -k > output/naiveBayes_combined.txt

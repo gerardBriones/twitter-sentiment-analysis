@@ -2,6 +2,12 @@
 - 10/1/2015 -
 
 For task A, we are using a baseline of a 'bag of unigrams' being fed into a classifer to classify the tweets.
+Tweets had special characters and stop words removed and then were tokenized.
+From these tokens, a unigram feature vector was created.
+Rows of the feature vectors were the tweets, columns were the bag of words, values were the frequencies.
+Words with a frequency of less than 2 were removed.
+The resulting feature vector was fed into WEKA in order to run the classification algorithms. 
+Classification algorithms : j48, naive bayes, naive bayes multinomial, random forest
 
 Results from our baseline: (can also be found in the output directory tagged with '_bl')
 
