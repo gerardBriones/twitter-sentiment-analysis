@@ -1,11 +1,12 @@
 # dataCleaner.py
-# removing special characters and lower casifying the data
+# Author: Kasun Amarasinghe
+# removes special characters, lower casifies the data, and removes stop words
 
 import re
 
 supporting_data_path = "supporting_data/"
 
-
+# Author: Kasun Amarasinghe
 # perform initial preprocessing
 # returns all lower case string without special characters, numbers etc. 
 def removeSpecialCharacters(str):
@@ -13,14 +14,12 @@ def removeSpecialCharacters(str):
 	new_str = new_str.lower()
 	return new_str 
 
+# Authors: Kasun Amarasinghe, Gerard Briones
 # Removes stop words from the string
 # Before calling this method, initial_preprocessing has to be called
 # pass in the initial preprocessed string as the argument
 # returns the tokens sans stop words from the tweet
 def removeStopWords(str, n):
-	# extracting the set of words in the string 	
-	word_list = str.split();
-
 	stopWord_Filename = "stopWord_list.txt"
 
 	# stop words should be space delimited
@@ -29,12 +28,16 @@ def removeStopWords(str, n):
 		row = re. sub('[^A-Za-z ]+', '', row)
 		sw_list = row.split()
 
+	# extracting the set of words in the string 	
 	word_list = str.split();
 	key_words = []
 	for word in word_list:
 		if word not in sw_list:
 			key_words.append(word)
 
+	##AUTHORSHIP NOTE
+	# -- This code block was handled by Gerard Briones --
+	# build ngrams from key_words
 	ngrams = []
 	for i in range(0, len(key_words)):
 		temp_string = ''

@@ -36,3 +36,18 @@ java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.J48 -o -t arff_d
 
 #run decision tree random forst on pm feature vector
 java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.RandomForest -o -t arff_data/arff_train_pm.arff -T arff_data/arff_test_pm.arff -k > output/randomForest_pm.txt
+
+#create feature vector of combined unigrams and bigrams
+python featureVectorCreator_combined.py
+
+#run naive bayes on combined feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayes -o -t arff_data/arff_train_combined.arff -T arff_data/arff_test_combined.arff -k > output/naiveBayes_combined.txt
+
+#run naive bayes multinomial on combined feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.bayes.NaiveBayesMultinomial -o -t arff_data/arff_train_combined.arff -T arff_data/arff_test_combined.arff -k > output/naiveBayesMulti_combined.txt
+
+#run decision tree J48 on combined feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.J48 -o -t arff_data/arff_train_combined.arff -T arff_data/arff_test_combined.arff -k > output/j48_combined.txt
+
+#run decision tree random forest on combined feature vector
+java -Xmx2G -cp /usr/share/java/weka.jar weka.classifiers.trees.RandomForest -o -t arff_data/arff_train_combined.arff -T arff_data/arff_test_combined.arff -k > output/randomForest_combined.txt

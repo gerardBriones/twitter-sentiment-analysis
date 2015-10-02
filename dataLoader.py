@@ -39,6 +39,10 @@ num_testing = 0
 # eliminate duplicate tweets in data set
 tweet_ids = {}
 
+## AUTHORSHIP NOTE
+# most of this code was copied from our earliest iteration (preprocessor.py)
+# that code was written by Gerard Briones, however, Kasun Amarasinghe contributed
+# in formatting the code for easier processing
 for filename in os.listdir(all_data_path):
 	
 	# defining the files to store the train and test datas
@@ -64,7 +68,10 @@ for filename in os.listdir(all_data_path):
 				tweet = row[5]
 				# checking for empty tweets
 				if tweet=='Not Available':	
-					pass
+					pass 
+
+				##AUTHORSHIP NOTE
+				# -- This code block is mostly handled by Kasun --
 				else:
 					sentiment = row[4]
 						

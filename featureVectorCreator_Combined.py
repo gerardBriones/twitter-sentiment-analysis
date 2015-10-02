@@ -1,6 +1,6 @@
-# featureVectorCreator_combined.py
+# featureVectorCreator_Combined.py
 # Authors: Gerard Briones, Kasun Amarasinghe
-# creates a combined featurevector for unigrams and bigrams and saves to a .arff file
+# creates a combined feature vector for unigrams and bigrams and saves to a .arff file
 # can be used to combine any two n-gram models, can be extended to combine more as well 
 
 import csv
@@ -23,10 +23,10 @@ train_file = 'train_data_taskA.tsv'
 test_file = 'test_data_taskA.tsv'
 
 # Arff for training
-arff_train_file = 'arff_train_Combined.arff'
+arff_train_file = 'arff_train_combined.arff'
 
 # Arff for testing
-arff_test_file = 'arff_test_Combined.arff'
+arff_test_file = 'arff_test_combined.arff'
 
 # Storing all training and testing data
 store_train_data = []
@@ -77,6 +77,7 @@ tdm_train_n2 = {}
 tdm_test_n1 = {}
 tdm_test_n2 = {}
 
+# Author: Gerard Briones
 # loadDatafromFle : loads data from a file and stores in a list of arrays
 # Arguments : Path of file, output data array, dictionary for tweet Ids, dictionary for tweet classes
 def loadDataFromFile(in_file_path, storing_array, tid_dict, sc_dict):
@@ -97,14 +98,15 @@ def loadDataFromFile(in_file_path, storing_array, tid_dict, sc_dict):
 						storing_array.append(row)
 						tid_dict[tid] = sentiment
 						sc_dict[sentiment]+=1					
-					
+
+# Author: Kasun Amarasinghe
 # printData: prints stored data
 # Arguments: array list with data		
 def printData(storing_array):
 	for tweet in storing_array:
 		print tweet
 
-
+# Author: Gerard Briones
 # ngramReader: populates ngram dictionaries from tweets
 # arguments: arraylist containing data, ngrams dictionary, n (1 for unigram, 2 for bigram etc.) 
 def ngramReader(data_array, n_grams, num_grams):
@@ -118,8 +120,7 @@ def ngramReader(data_array, n_grams, num_grams):
 			else:
 				n_grams[token] = 1
 				
-	
-
+# Author: Kasun Amarasinghe
 # chooseFrequentWords: Rmoves n-grams with lower or equal frequency than/to the threshold
 # Arguments: ngrams dictionary, remaining(selected) ngrams dictionary, frequency threshold
 def chooseFrequentWords (n_grams, selected_n_grams, freq):
@@ -129,6 +130,7 @@ def chooseFrequentWords (n_grams, selected_n_grams, freq):
 		if value > freq:
 			selected_n_grams[word] = value
 
+# Author: Gerard Briones
 # createFV: creates the feature vector from the extracted data
 # arguments: stored data array list, selected ngrams dictionary, dictionary to hold FV/TDM, tweetID dictionary, n
 def createFV(data_array, selected_n_grams, tdm_dict, tid_dict, num_grams):
@@ -149,9 +151,7 @@ def createFV(data_array, selected_n_grams, tdm_dict, tid_dict, num_grams):
 				if token in words:
 					tdm_dict[tid][token]+=1
 
-
-
-
+# Author: Kasun Amarasinghe
 # writeCombinedFVtoARFF: writes the combined FV/ TDM to a .arff file
 # arguments: path for .arff file, selected n_grams lists for both values of n, tdm dictionaries for both values of n, 
 def writeCombinedFVtoARFF(out_file_path, selected_n_grams_n1,selected_n_grams_n2, tdm_dict_n1, tdm_dict_n2, tid_dict, sc_dict, header):

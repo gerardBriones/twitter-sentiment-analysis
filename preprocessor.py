@@ -1,5 +1,5 @@
 # preprocessor.py
-# Authors: Gerard Briones, Kasun Amarasinghe
+# Authors: Gerard Briones
 # Package Dependencies: none
 
 import csv
@@ -77,7 +77,7 @@ for filename in os.listdir(training_data_path):
 				#		removes special characters
 				# dataCleaner -- removeStopWords() 
 				#		removes stop words
-				tokens = dataCleaner.removeStopWords(dataCleaner.removeSpecialCharacters(row[5].lower()))
+				tokens = dataCleaner.removeStopWords(dataCleaner.removeSpecialCharacters(row[5].lower()), 2)
 
 				# first occurance of tweet id, to prevent tracking duplicates
 				if not tweet_id in tweet_ids_to_index:
@@ -145,7 +145,7 @@ for filename in os.listdir(training_data_path):
 				#		removes special characters
 				# dataCleaner -- removeStopWords() 
 				#		removes stop words
-				tokens = dataCleaner.removeStopWords(dataCleaner.removeSpecialCharacters(row[5].lower()))
+				tokens = dataCleaner.removeStopWords(dataCleaner.removeSpecialCharacters(row[5].lower()), 2)
 
 				# only tracking unique tweet_ids
 				if not tweet_id in temp_tweet_ids:

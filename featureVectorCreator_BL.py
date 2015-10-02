@@ -65,6 +65,7 @@ sentiment_classes_test = {'positive':0, 'neutral':0, 'negative':0}
 tdm_train = {}
 tdm_test = {}
 
+# Author: Gerard Briones
 # datareader (input_file, unigrams_dictionary,  tweetIDs_dictionary, SentimentClass_dictionary
 # populating the unigrams dictionary
 # collects all the unique words that exist in the training set
@@ -96,6 +97,7 @@ def dataReader(in_file_path, n_grams, tid_dict, sc_dict):
 							else:
 								n_grams[token] = 1
 
+# Author: Kasun Amarasinghe
 # Extracts the words with higher frequency than the threshold
 # Reduces the sparseness of the matrix
 def chooseFrequentWords (n_grams, selected_n_grams, freq):
@@ -108,7 +110,7 @@ def chooseFrequentWords (n_grams, selected_n_grams, freq):
 		if value > freq:
 			selected_n_grams[word] = value
 
-
+# Author: Gerard Briones
 # creates the feature vector from the extracted data
 def createFV(in_file_path, selected_n_grams, tdm_dict, tid_dict, sc_dict):
 	with open(in_file_path, 'rb') as tsv_in:
@@ -130,6 +132,7 @@ def createFV(in_file_path, selected_n_grams, tdm_dict, tid_dict, sc_dict):
 							tdm_dict[tid][token]+=1
 
 
+# Author: Kasun Amarasinghe
 # writes the created feature vector to a file
 def writeFVtoARFF(out_file_path, selected_n_grams, tdm_dict, tid_dict, sc_dict, header):
 	# creating the Training ARFF file
