@@ -49,3 +49,39 @@ def removeStopWords(str, n):
 			temp_string += (key_words[j]) + ' '
 		ngrams.append(temp_string.rstrip())
 	return ngrams
+
+def convertEmoticons(str):
+	# matches variations of :) -- smileEmoticon
+	str = re.sub('[:=8]-?[)\]}]|[([{}]-?[:=8]', 'smileEmoticon', str)
+
+	# matches variations of :( -- frownEmoticon
+	str = re.sub('[:=8]-?[([{]|[)\]}]-?[:=8]', 'frownEmoticon', str)
+
+	# matches variations of ;) -- winkEmoticon
+	str = re.sub(';-?[)\]}]|[([{}]-?;', 'winkEmoticon', str)
+
+	# matches variations of :P
+	str = re.sub('[:=;8]-?[pP]|[dpP]-?[:=;8]', 'tongueEmoticon', str)
+
+	# matches variations of :/
+	str = re.sub('[:=;8]-?[/|\\\]|[/|\\\]-?[:=;8]', 'concernEmoticon', str)
+
+	# matches variations of :D
+	str = re.sub('[:=xX8]-?D', 'grinEmoticon', str)
+	
+	# matches variations of D:
+	str = re.sub('D-?[:=xX8]', 'mirrorGrinEmoticon', str)
+
+	# matches variations of ;D
+	str = re.sub(';-?D', 'winkGrinEmoticon', str)
+
+	# matches variations of :O
+	str = re.sub('[:=]-?[oO]|[oO]-?[:=]', 'surpriseEmoticon', str)
+
+	# matches variations of :')
+	str = re.sub('[:=][\'`]-?[)\]}]|[([{]-?[\'`][:=]', 'tearSmileEmoticon', str)
+
+	# matches variations of :'(
+	str = re.sub('[:=][\'`]-?[({[]|[)\]}]-?[\'`][:=]', 'tearFrownEmoticon', str)
+
+	return str
