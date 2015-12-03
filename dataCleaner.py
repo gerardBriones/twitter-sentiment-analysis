@@ -3,6 +3,9 @@
 # removes special characters, lower casifies the data, and removes stop words
 
 import re
+from nltk.stem.porter import PorterStemmer
+
+stemmer = PorterStemmer()
 
 supporting_data_path = "supporting_data/"
 
@@ -32,6 +35,7 @@ def removeStopWords(str, n):
 	word_list = str.split();
 	key_words = []
 	for word in word_list:
+		word = stemmer.stem(word) # this is the porter stemmer
 		if word not in sw_list:
 			key_words.append(word)
 
@@ -61,7 +65,8 @@ def convertEmoticons(str):
 	str = re.sub(';-?[)\]}]|[([{}]-?;', 'winkEmoticon', str)
 
 	# matches variations of :P
-	str = re.sub('[:=;8]-?[pP]|[dpP]-?[:=;8]', 'tongueEmoticon', str)
+	# |[dpP]-?[:=;8] # reverse tongue emoticon
+	str = re.sub('[:=;8]-?[pP]', 'tongueEmoticon', str)
 
 	# matches variations of :/
 	str = re.sub('[:=;8]-?[/|\\\]|[/|\\\]-?[:=;8]', 'concernEmoticon', str)
