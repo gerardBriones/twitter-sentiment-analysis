@@ -3,9 +3,6 @@
 # removes special characters, lower casifies the data, and removes stop words
 
 import re
-from nltk.stem.porter import PorterStemmer
-
-stemmer = PorterStemmer()
 
 supporting_data_path = "supporting_data/"
 
@@ -35,7 +32,6 @@ def removeStopWords(str, n):
 	word_list = str.split();
 	key_words = []
 	for word in word_list:
-		word = stemmer.stem(word) # this is the porter stemmer
 		if word not in sw_list:
 			key_words.append(word)
 
@@ -54,6 +50,8 @@ def removeStopWords(str, n):
 		ngrams.append(temp_string.rstrip())
 	return ngrams
 
+# Author: Gerard Briones
+# convert emoticons to unique words
 def convertEmoticons(str):
 	# matches variations of :) -- smileEmoticon
 	str = re.sub('[:=8]-?[)\]}]|[([{}]-?[:=8]', 'smileEmoticon', str)
@@ -65,8 +63,7 @@ def convertEmoticons(str):
 	str = re.sub(';-?[)\]}]|[([{}]-?;', 'winkEmoticon', str)
 
 	# matches variations of :P
-	# |[dpP]-?[:=;8] # reverse tongue emoticon
-	str = re.sub('[:=;8]-?[pP]', 'tongueEmoticon', str)
+	str = re.sub('[:=;8]-?[pP]|[dpP]-?[:=;8]', 'tongueEmoticon', str)
 
 	# matches variations of :/
 	str = re.sub('[:=;8]-?[/|\\\]|[/|\\\]-?[:=;8]', 'concernEmoticon', str)
