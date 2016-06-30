@@ -85,8 +85,8 @@ def load_data(input_file_path, output_file_path, type, mods):
 					tweet = row[3]
 
 				if(tweet.lower() == 'not available'):
-					print(tweet)
-					pass
+					# print(tweet)
+					continue
 
 				if('emoticons' in mods):
 					tweet = convert_emoticons(tweet)
@@ -96,5 +96,5 @@ def load_data(input_file_path, output_file_path, type, mods):
 				output_file.write(str(tweet_id) + '\t' + tweet + '\t' + sentiment + '\t' + topic + '\n')
 
 # print(remove_stopwords('i can\'t feel my face when i\'m with you'))
-load_data(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4:])
+# load_data(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4:])
 # print(sys.argv[4:])

@@ -6,3 +6,13 @@ http://alt.qcri.org/semeval2016/task4/
 _twitter data download_
 https://github.com/aritter/twitter_download
 
+example usage:
+	<test_Script.py>
+	>>> import DataPrep
+	>>> import FeatureVectorCreator
+	>>> DataPrep.load_data('Data/TaskA.tsv', 'TaskA_cleaned.tsv', 'a', ['emoticons'])
+	>>> fvc1 = FeatureVectorCreator
+	>>> fvc1.load_data('TaskA_cleaned.tsv', 2)
+	>>> fvc1.select_frequent_ngrams(5)
+	>>> feature_vector = fvc1.create_feature_vector()
+	>>> fvc1.arffify('TaskA_arff.arff', 'TaskA', feature_vector)
